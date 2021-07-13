@@ -3,123 +3,123 @@ const express = require('express')
 let brands = [
     {
         id: 7,
-        nome: "Audi"
+        name: "Audi"
     },
     {
         id: 9,
-        nome: "BMW"
+        name: "BMW"
     },
     {
         id: 17,
-        nome: "Chrysler"
+        name: "Chrysler"
     },
     {
         id: 18,
-        nome: "Citroën"
+        name: "Citroën"
     },
     {
         id: 27,
-        nome: "Fiat"
+        name: "Fiat"
     },
     {
         id: 29,
-        nome: "Ford"
+        name: "Ford"
     },
     {
         id: 33,
-        nome: "GM - Chevrolet"
+        name: "GM - Chevrolet"
     },
     {
         id: 35,
-        nome: "Gurgel"
+        name: "Gurgel"
     },
     {
         id: 38,
-        nome: "Honda"
+        name: "Honda"
     },
     {
         id: 39,
-        nome: "Hyundai"
+        name: "Hyundai"
     },
     {
         id: 42,
-        nome: "JAC"
+        name: "JAC"
     },
     {
         id: 44,
-        nome: "Jeep"
+        name: "Jeep"
     },
     {
         id: 47,
-        nome: "Kia Motors"
+        name: "Kia Motors"
     },
     {
         id: 48,
-        nome: "Lada"
+        name: "Lada"
     },
     {
         id: 50,
-        nome: "Land Rover"
+        name: "Land Rover"
     },
     {
         id: 52,
-        nome: "LIFAN"
+        name: "LIFAN"
     },
     {
         id: 60,
-        nome: "Mercedes-Benz"
+        name: "Mercedes-Benz"
     },
     {
         id: 63,
-        nome: "MINI"
+        name: "MINI"
     },
     {
         id: 64,
-        nome: "Mitsubishi"
+        name: "Mitsubishi"
     },
     {
         id: 66,
-        nome: "Nissan"
+        name: "Nissan"
     },
     {
         id: 67,
-        nome: "Peugeot"
+        name: "Peugeot"
     },
     {
         id: 70,
-        nome: "Porsche"
+        name: "Porsche"
     },
     {
         id: 73,
-        nome: "Renault"
+        name: "Renault"
     },
     {
         id: 81,
-        nome: "SSANGYONG"
+        name: "SSANGYONG"
     },
     {
         id: 82,
-        nome: "Subaru"
+        name: "Subaru"
     },
     {
         id: 83,
-        nome: "Suzuki"
+        name: "Suzuki"
     },
     {
         id: 85,
-        nome: "Toyota"
+        name: "Toyota"
     },
     {
         id: 86,
-        nome: "Troller"
+        name: "Troller"
     },
     {
         id: 87,
-        nome: "Volvo"
+        name: "Volvo"
     },
     {
         id: 88,
-        nome: "VW - VolksWagen"
+        name: "VW - VolksWagen"
     }
 ]
 
