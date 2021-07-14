@@ -184,6 +184,18 @@ var autos = [
 
 /* -------------------------------------------------------------------------------------------------------------------------- */
 
+function createId(entity, limit = 100) {
+    let id;
+
+    do {
+        id = Math.floor(Math.random() * limit)
+    } while (entity.some(item => item.id === id))
+
+    return id
+}
+
+/* -------------------------------------------------------------------------------------------------------------------------- */
+
 const brandsRouter = express.Router()
 
 brandsRouter.get('/', async (req, res) => {
@@ -208,6 +220,25 @@ brandsRouter.delete('/:id', async (req, res) => {
     }
 })
 
+brandsRouter.post('/', async (req, res) => {
+    try {
+        const { name } = req.body
+
+        let newBrand = {
+            name,
+            //id: generateId()
+            id: createId(brands)
+        }
+
+        brands.push(newBrand)
+
+        return res.status(200).json(newBrand.id)
+
+    } catch (err) {
+        return res.status(500).json({ error: err.message })
+    }
+})
+
 /* -------------------------------------------------------------------------------------------------------------------------- */
 
 const autosRouter = express.Router()
@@ -224,10 +255,31 @@ autosRouter.delete('/:id', async (req, res) => {
 
         if (auto) {
             autos = autos.filter(auto => auto.id !== parseInt(id))
-            return res.status(200).json({ message: `Veículo: ${id} deletado com sucesso` })
+            return res.status(200)
         }
 
         return res.status(400).json({ error: "Id informada não pertence a um veículo existente" })
+
+    } catch (err) {
+        return res.status(500).json({ error: err.message })
+    }
+})
+
+autosRouter.post('/', async (req, res) => {
+    try {
+        const { model, year, price, brandId } = req.body
+
+        let newAuto = {
+            id: createId(autos, 10000),
+            model,
+            year,
+            price,
+            brandId
+        }
+
+        autos.push(newAuto)
+
+        return res.status(200).json(newAuto.id)
 
     } catch (err) {
         return res.status(500).json({ error: err.message })
