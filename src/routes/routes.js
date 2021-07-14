@@ -210,6 +210,12 @@ brandsRouter.delete('/:id', async (req, res) => {
 
         if (brand) {
             brands = brands.filter(brand => brand.id !== parseInt(id))
+            autos.forEach((auto, index) => {
+                if (auto.brandId === parseInt(id)) {
+                    console.log(autos[index].brandId)
+                    autos[index].brandId = -1
+                }
+            })
             return res.status(200).json({ message: `Marca: ${id} deletada com sucesso` })
         }
 
