@@ -250,7 +250,16 @@ brandsRouter.post('/', async (req, res) => {
 const autosRouter = express.Router()
 
 autosRouter.get('/', async (req, res) => {
-    return res.json(autos)
+    const responseAutos = autos.map(auto => {
+        return {
+            id: auto.id,
+            model: auto.model,
+            year: auto.year,
+            price: auto.price,
+            brand: brands[auto.brandId]
+        }
+    })
+    return res.json(responseAutos)
 })
 
 autosRouter.delete('/:id', async (req, res) => {
