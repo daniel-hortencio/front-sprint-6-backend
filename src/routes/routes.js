@@ -256,7 +256,7 @@ autosRouter.get('/', async (req, res) => {
             model: auto.model,
             year: auto.year,
             price: auto.price,
-            brand: brands[auto.brandId]
+            brand: brands.find(brand => brand.id === auto.brandId)
         }
     })
     return res.json(responseAutos)
