@@ -1,8 +1,7 @@
 const express = require('express')
 const cors = require('cors')
 
-const brandsRouter = require('./routes/brands.routes')
-const autosRouter = require('./routes/autos.routes')
+const routes = require('./routes/routes')
 
 var app = express()
 
@@ -14,8 +13,9 @@ app.use(cors({
 
 app.use(express.json())
 
-app.use("/brands", brandsRouter)
-app.use("/autos", autosRouter)
+app.use("/brands", routes.brandsRouter)
+app.use("/autos", routes.autosRouter)
+app.use("/summary", routes.summaryRouter)
 
 app.listen(3333, () => {
     console.log("Backend is running on port 3333")
