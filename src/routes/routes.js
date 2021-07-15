@@ -202,6 +202,23 @@ brandsRouter.get('/', async (req, res) => {
     return res.json(brands)
 })
 
+brandsRouter.get('/:id', async (req, res) => {
+    try {
+        const { id } = req.params
+
+        const brand = brands.find(brand => brand.id === parseInt(id))
+
+        if (brand) {
+            return res.status(200).json(brand)
+        }
+
+        return res.status(400).json({ error: "Id informada não pertence a uma marca existente" })
+
+    } catch (err) {
+        return res.status(500).json({ error: err.message })
+    }
+})
+
 brandsRouter.delete('/:id', async (req, res) => {
     try {
         const { id } = req.params
@@ -280,6 +297,30 @@ autosRouter.get('/', async (req, res) => {
         }
     })
     return res.json(responseAutos)
+})
+
+autosRouter.get('/:id', async (req, res) => {
+    try {
+        const { id } = req.params
+
+        const auto = autos.find(auto => auto.id === parseInt(id))
+
+        if (auto) {
+            const selectedAuto = {
+                id: auto.id,
+                model: auto.model,
+                year: auto.year,
+                price: auto.price,
+                brand: brands.find(brand => brand.id === auto.brandId)
+            }
+            return res.status(200).json(selectedAuto)
+        }
+
+        return res.status(400).json({ error: "Id informada não pertence a uma marca existente" })
+
+    } catch (err) {
+        return res.status(500).json({ error: err.message })
+    }
 })
 
 autosRouter.delete('/:id', async (req, res) => {
