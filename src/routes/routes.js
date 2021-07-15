@@ -226,13 +226,33 @@ brandsRouter.delete('/:id', async (req, res) => {
     }
 })
 
+brandsRouter.put('/:id', async (req, res) => {
+    try {
+        const { id } = req.params
+
+        const { name } = req.body
+
+        const index = brands.findIndex(auto => auto.id === parseInt(id))
+
+        if (index > 0) {
+            brands[index].name = name
+
+            return res.status(200).json({ message: `Marca: ${id} atualizada com sucesso` })
+        }
+
+        return res.status(400).json({ error: "Id informada não pertence a uma marca existente" })
+
+    } catch (err) {
+        return res.status(500).json({ error: err.message })
+    }
+})
+
 brandsRouter.post('/', async (req, res) => {
     try {
         const { name } = req.body
 
         let newBrand = {
             name,
-            //id: generateId()
             id: createId(brands)
         }
 
@@ -270,7 +290,31 @@ autosRouter.delete('/:id', async (req, res) => {
 
         if (auto) {
             autos = autos.filter(auto => auto.id !== parseInt(id))
-            return res.status(200)
+            return res.status(200).json({ message: `Veículo: ${id} deletado com sucesso` })
+        }
+
+        return res.status(400).json({ error: "Id informada não pertence a um veículo existente" })
+
+    } catch (err) {
+        return res.status(500).json({ error: err.message })
+    }
+})
+
+autosRouter.put('/:id', async (req, res) => {
+    try {
+        const { id } = req.params
+
+        const { model, year, price, brandId } = req.body
+
+        const index = autos.findIndex(auto => auto.id === parseInt(id))
+
+        if (index > 0) {
+            autos[index].model = model
+            autos[index].year = year
+            autos[index].price = price
+            autos[index].brandId = brandId
+
+            return res.status(200).json({ message: `Veículo: ${id} atualizado com sucesso` })
         }
 
         return res.status(400).json({ error: "Id informada não pertence a um veículo existente" })
